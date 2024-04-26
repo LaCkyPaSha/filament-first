@@ -1,4 +1,3 @@
-version: "3.7"
 services:
     app:
         build:
@@ -19,15 +18,8 @@ services:
         image: sqlite:3
         container_name: database
         restart: unless-stopped
-        environment:
-            MYSQL_DATABASE: ${DB_DATABASE}
-            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-            MYSQL_PASSWORD: ${DB_PASSWORD}
-            MYSQL_USER: ${DB_USERNAME}
-            SERVICE_TAGS: dev
-            SERVICE_NAME: mysql
         volumes:
-            - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+            - ./database:/var/www/database
         networks:
             - my-network
     nginx:
