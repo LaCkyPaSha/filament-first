@@ -1,4 +1,3 @@
-#services:
 ##    laravel.test:
 ##        build:
 ##            context: ./vendor/laravel/sail/runtimes/8.2
@@ -27,13 +26,23 @@
 ##            - meilisearch
 ##            - mailpit
 ##            - selenium
-#sqlite:
-#    image: 'alpine'
-#    command: tail -f /dev/null  # Keep the container running
-#    volumes:
-#        - './storage:/var/www/html/storage'  # Mount the storage directory
-#    networks:
-#        - sail
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 8000:80
+        depends_on:
+            - db
+    db:
+        image: sqlite:latest
+        container_name: database
+        restart: unless-stopped
+        volumes:
+            - ./database:/var/www/database
+        networks:
+            - my-network
 #    redis:
 #        image: 'redis:alpine'
 #        ports:
