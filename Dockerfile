@@ -19,7 +19,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
-    libsqlite3-dev   # Add this line to install SQLite dev package
+    libsqlite3-dev \
+    libonig-dev  # Add this line to install libonig-dev package
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
