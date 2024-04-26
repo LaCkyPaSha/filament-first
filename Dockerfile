@@ -8,7 +8,7 @@ RUN composer install --ignore-platform-req=ext-intl --ignore-platform-req=ext-zi
 
 RUN ls
 
-CMD ["filament-first/start.sh"]
+CMD ["/filament-first/start.sh"]
 
 #CMD php artisan serve --host=localhost --port=8000
 #EXPOSE 8000
