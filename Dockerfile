@@ -20,15 +20,22 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     libsqlite3-dev \
-    libonig-dev  # Add this line to install libonig-dev package
+    libonig-dev
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install extensions
-RUN docker-php-ext-install pdo_sqlite mbstring zip exif pcntl
-RUN docker-php-ext-configure gd --with-gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/
-RUN docker-php-ext-install gd
+# Install PHP extensions using pecl
+RUN pecl install pdo_sqlite && \
+    docker-php-ext-enable pdo_sqlite && \
+    pecl install mbstring && \
+    docker-php-ext-enable mbstring && \
+    pecl install zip && \
+    docker-php-ext-enable zip && \
+    pecl install exif && \
+    docker-php-ext-enable exif && \
+    pecl install pcntl && \
+    docker-php-ext-enable pcntl
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
