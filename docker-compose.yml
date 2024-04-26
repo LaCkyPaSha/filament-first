@@ -92,44 +92,44 @@
 #    sail-meilisearch:
 #        driver: local
 
-services:
-    app:
-        build:
-            args:
-                user: user
-                uid: 1000
-            context: ./
-            dockerfile: Dockerfile
-        image: my-image
-        container_name: app
-        restart: unless-stopped
-        working_dir: /var/www/
-        volumes:
-            - ./:/var/www
-        networks:
-            - my-network
-
-    db:
-        image: sqlite:latest
-        container_name: database
-        restart: unless-stopped
-        volumes:
-            - ./database:/var/www/database
-        networks:
-            - my-network
-
-    nginx:
-        image: nginx:alpine
-        container_name: nginx-compose
-        restart: unless-stopped
-        ports:
-            - 8000:80
-        volumes:
-            - ./:/var/www
-            - ./docker-compose/nginx:/etc/nginx/conf.d/
-        networks:
-            - my-network
-
-networks:
-    my-network:
-        driver: bridge
+#services:
+#    app:
+#        build:
+#            args:
+#                user: user
+#                uid: 1000
+#            context: ./
+#            dockerfile: Dockerfile
+#        image: my-first-image
+#        container_name: app
+#        restart: unless-stopped
+#        working_dir: /var/www/
+#        volumes:
+#            - ./:/var/www
+#        networks:
+#            - my-network
+#
+#    db:
+#        image: sqlite:latest
+#        container_name: database
+#        restart: unless-stopped
+#        volumes:
+#            - ./database:/var/www/database
+#        networks:
+#            - my-network
+#
+#    nginx:
+#        image: nginx:alpine
+#        container_name: nginx-compose
+#        restart: unless-stopped
+#        ports:
+#            - 8000:80
+#        volumes:
+#            - ./:/var/www
+#            - ./docker-compose/nginx:/etc/nginx/conf.d/
+#        networks:
+#            - my-network
+#
+#networks:
+#    my-network:
+#        driver: bridge
