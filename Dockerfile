@@ -18,7 +18,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl
+    curl \
+    libsqlite3-dev   # Add this line to install SQLite dev package
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -44,9 +45,10 @@ COPY --chown=www:www . /var/www
 # Change current user to www
 USER www
 
-# Expose port 9000 and start php-fpm server
+# Expose port 8000 and start php-fpm server
 EXPOSE 8000
 CMD ["php-fpm"]
+
 
 #FROM php:8.2-fpm
 #ARG user
