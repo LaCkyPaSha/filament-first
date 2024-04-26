@@ -8,7 +8,7 @@ RUN composer install --ignore-platform-req=ext-intl --ignore-platform-req=ext-zi
 
 RUN ls
 
-CMD ["start.sh"]
+CMD ["./start.sh"]
 
 #CMD php artisan serve --host=localhost --port=8000
 #EXPOSE 8000
