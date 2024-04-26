@@ -6,6 +6,8 @@ WORKDIR /app
 COPY . /app
 RUN composer install --ignore-platform-req=ext-intl --ignore-platform-req=ext-zip
 
+CMD('start.sh')
+
 #CMD php artisan serve --host=localhost --port=8000
 #EXPOSE 8000
 
