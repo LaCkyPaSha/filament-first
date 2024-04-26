@@ -58,9 +58,6 @@ USER www
 EXPOSE 8000
 CMD ["php-fpm"]
 
-
-
-
 #FROM php:8.2-fpm
 #ARG user
 #ARG uid
