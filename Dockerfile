@@ -36,7 +36,7 @@ RUN docker-php-source extract \
     && docker-php-source delete
 
 # Install other PHP extensions
-RUN docker-php-ext-install mbstring zip exif pcntl
+#RUN docker-php-ext-install mbstring zip exif pcntl
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
