@@ -33,22 +33,22 @@
 #EXPOSE 8181
 #/////////////////////////////////////////////////////////
 # Stage 1: Composer dependencies installation
-FROM php:8.2 AS composer
-
-RUN apt-get update && apt-get install -y \
-    libicu-dev \
-    zlib1g-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-WORKDIR /app
-
-# Copy only the composer files
-COPY composer.json composer.lock ./
-
-# Install Composer dependencies. If it fails, output a message but do not fail the build.
-RUN composer install || echo "Composer install failed. Continuing without dependencies."
+#FROM php:8.2 AS composer
+#
+#RUN apt-get update && apt-get install -y \
+#    libicu-dev \
+#    zlib1g-dev \
+#    && rm -rf /var/lib/apt/lists/*
+#
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+#
+#WORKDIR /app
+#
+## Copy only the composer files
+#COPY composer.json composer.lock ./
+#
+## Install Composer dependencies. If it fails, output a message but do not fail the build.
+#RUN composer install || echo "Composer install failed. Continuing without dependencies."
 
 # Stage 2: Application runtime
 FROM php:8.2
