@@ -31,3 +31,5 @@ php artisan route:cache
 
 echo "Running migrations..."
 php artisan migrate --force
+
+docker build -t my-image .

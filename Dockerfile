@@ -35,6 +35,8 @@
 
 FROM php:8.2
 
+ENV DOCKER_BUILDKIT=1
+
 # Set environment variable to allow Composer to run as superuser
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
