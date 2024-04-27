@@ -60,10 +60,10 @@ RUN composer install --ignore-platform-reqs
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
 
-# Expose port 8000
-EXPOSE 8000
-
 # Set the entrypoint to start.sh
 ENTRYPOINT ["/app/start.sh"]
 
 CMD php artisan serve --host=0.0.0.0 --port=8181
+
+# Expose port 8000
+EXPOSE 8181
