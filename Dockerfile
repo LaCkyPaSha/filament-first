@@ -204,3 +204,7 @@ RUN #php -d memory_limit=-1 composer clear-cache
 # Switch to non-root user
 USER $user
 
+
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+ENTRYPOINT ["/app/start.sh"]
