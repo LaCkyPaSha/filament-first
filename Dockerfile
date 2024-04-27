@@ -205,7 +205,8 @@ RUN mkdir -p /home/$user/.composer && \
 WORKDIR /var/www
 
 # Clear Composer cache
-RUN php -d memory_limit=-1 /usr/local/bin/composer clear-cache
+RUN php -d memory_limit=-1 composer clear-cache
 
 # Switch to non-root user
 USER $user
+
