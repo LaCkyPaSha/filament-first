@@ -95,6 +95,10 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
+RUN php -d memory_limit=-1 /usr/local/bin/composer install --no-scripts --no-autoloader
+
+composer clear-cache
+
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
