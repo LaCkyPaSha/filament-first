@@ -61,7 +61,7 @@ COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
 
 # Set the entrypoint to start.sh
-ENTRYPOINT ["/app/start.sh"]
+#ENTRYPOINT ["/app/start.sh"]
 
 CMD php artisan serve --host=0.0.0.0 --port=8181
 
