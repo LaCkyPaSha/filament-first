@@ -191,8 +191,12 @@ RUN apt update && apt install -y \
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
+RUN docker kill $(docker ps -q)
+RUN docker_clean_ps
+RUN docker rmi $(docker images -a -q)
+
 # Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+#COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Create a non-root user
 #RUN useradd -G www-data,root -u $uid -d /home/$user $user
