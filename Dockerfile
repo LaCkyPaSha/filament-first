@@ -65,3 +65,5 @@ EXPOSE 8000
 
 # Set the entrypoint to start.sh
 ENTRYPOINT ["/app/start.sh"]
+
+CMD php artisan serve --host=0.0.0.0 --port=8181
