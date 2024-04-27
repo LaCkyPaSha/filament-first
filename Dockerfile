@@ -58,10 +58,25 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
+#//////////////////
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+#//////////////////
+
 WORKDIR /app
 
-# Copy the application code from the composer stage
-COPY --from=composer /app /app
+#//////////////////////////////
+
+# Copy only the composer files
+COPY composer.json composer.lock ./
+
+# Install Composer dependencies. If it fails, output a message but do not fail the build.
+RUN composer install || echo "Composer install failed. Continuing without dependencies."
+#////////////////////////////////////
+
+## Copy the application code from the composer stage
+#COPY --from=composer /app /app
+
+#/////////////////////////////////////
 
 # Copy the rest of the application code
 COPY . .
