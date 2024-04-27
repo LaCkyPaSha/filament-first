@@ -19,7 +19,7 @@ RUN composer install --ignore-platform-req=ext-intl --ignore-platform-req=ext-zi
 #ENTRYPOINT ["/app/start.sh"]
 
 CMD php artisan serve --host=0.0.0.0 --port=8181
-#EXPOSE 8181
+EXPOSE 8181
 
 #FROM php:8.2
 #RUN apt-get update && apt-get install -y libicu-dev zlib1g-dev
