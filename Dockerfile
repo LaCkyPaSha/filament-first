@@ -35,7 +35,7 @@
 
 FROM php:8.2
 
-RUN docker image prune -all
+RUN docker image prune -a
 
 # Set environment variable to allow Composer to run as superuser
 ENV COMPOSER_ALLOW_SUPERUSER 1
