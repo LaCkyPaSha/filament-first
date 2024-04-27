@@ -86,37 +86,37 @@
 #EXPOSE 8181
 #///////////////////////////////
 
-# Use an offici# Use an official PHP image as base
-FROM php:8.2
-
-# Update package lists and install necessary dependencies
-RUN apt-get update && apt-get install -y \
-   libicu-dev \
-   zlib1g-dev \
-   && rm -rf /var/lib/apt/lists/*
-
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Set working directory within the container
-WORKDIR /app
-
-# Copy the composer files and install dependencies
-COPY composer.json composer.lock ./
-RUN php -d memory_limit=-1 /usr/local/bin/composer install --no-scripts --no-autoloader
-
-# Clear Composer cache
-RUN php -d memory_limit=-1 /usr/local/bin/composer clear-cache
-
-# Copy the rest of the application code
-COPY . .
-
-# Generate autoload files
-RUN php -d memory_limit=-1 /usr/local/bin/composer dump-autoload --optimize
-
-# Your remaining Dockerfile commands
-CMD php artisan serve --host=0.0.0.0 --port=8181
-EXPOSE 8181
+## Use an offici# Use an official PHP image as base
+#FROM php:8.2
+#
+## Update package lists and install necessary dependencies
+#RUN apt-get update && apt-get install -y \
+#   libicu-dev \
+#   zlib1g-dev \
+#   && rm -rf /var/lib/apt/lists/*
+#
+## Install Composer
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+#
+## Set working directory within the container
+#WORKDIR /app
+#
+## Copy the composer files and install dependencies
+#COPY composer.json composer.lock ./
+#RUN php -d memory_limit=-1 /usr/local/bin/composer install --no-scripts --no-autoloader
+#
+## Clear Composer cache
+#RUN php -d memory_limit=-1 /usr/local/bin/composer clear-cache
+#
+## Copy the rest of the application code
+#COPY . .
+#
+## Generate autoload files
+#RUN php -d memory_limit=-1 /usr/local/bin/composer dump-autoload --optimize
+#
+## Your remaining Dockerfile commands
+#CMD php artisan serve --host=0.0.0.0 --port=8181
+#EXPOSE 8181
 
 
 #/////////////////////////////////////////////////////////
@@ -159,3 +159,15 @@ EXPOSE 8181
 #
 ## Expose port 8000
 #EXPOSE 8181
+#//////////////////////////////////////////////////////////
+
+FROM php:8.2
+RUN apt-get update -y && apt-get install -y openssl zip unzip git
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN docker-php-ext-install pdo mbstring
+WORKDIR /app
+COPY . /app
+RUN composer install
+
+CMD php artisan serve --host=0.0.0.0 --port=8181
+EXPOSE 8181
