@@ -51,39 +51,70 @@
 #RUN composer install || echo "Composer install failed. Continuing without dependencies."
 
 # Stage 2: Application runtime
+#FROM php:8.2
+#
+#RUN apt-get update && apt-get install -y \
+#    libicu-dev \
+#    zlib1g-dev \
+#    && rm -rf /var/lib/apt/lists/*
+#
+##//////////////////
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+##//////////////////
+#
+#WORKDIR /app
+#
+##//////////////////////////////
+#
+## Copy only the composer files
+#COPY composer.json composer.lock ./
+#
+## Install Composer dependencies. If it fails, output a message but do not fail the build.
+#RUN composer install || echo "Composer install failed. Continuing without dependencies."
+##////////////////////////////////////
+#
+### Copy the application code from the composer stage
+##COPY --from=composer /app /app
+#
+##/////////////////////////////////////
+#
+## Copy the rest of the application code
+#COPY . .
+#
+## Your remaining Dockerfile commands
+#CMD php artisan serve --host=0.0.0.0 --port=8181
+#EXPOSE 8181
+#///////////////////////////////
+
+# Use an official PHP image as base
 FROM php:8.2
 
+# Update package lists and install necessary dependencies
 RUN apt-get update && apt-get install -y \
     libicu-dev \
     zlib1g-dev \
     && rm -rf /var/lib/apt/lists/*
 
-#//////////////////
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-#//////////////////
 
+# Set working directory within the container
 WORKDIR /app
 
-#//////////////////////////////
-
-# Copy only the composer files
+# Copy the composer files and install dependencies
 COPY composer.json composer.lock ./
-
-# Install Composer dependencies. If it fails, output a message but do not fail the build.
-RUN composer install || echo "Composer install failed. Continuing without dependencies."
-#////////////////////////////////////
-
-## Copy the application code from the composer stage
-#COPY --from=composer /app /app
-
-#/////////////////////////////////////
+RUN composer install --no-scripts --no-autoloader
 
 # Copy the rest of the application code
 COPY . .
 
+# Generate autoload files
+RUN composer dump-autoload --optimize
+
 # Your remaining Dockerfile commands
 CMD php artisan serve --host=0.0.0.0 --port=8181
 EXPOSE 8181
+
 
 #/////////////////////////////////////////////////////////
 
