@@ -7,7 +7,13 @@ COPY . /app
 COPY start.sh /app
 RUN composer install --ignore-platform-req=ext-intl --ignore-platform-req=ext-zip
 
-CMD ["/app/start.sh"]
+#CMD ["/app/start.sh"]
+
+# Make start.sh executable
+RUN chmod +x /app/start.sh
+
+# Set the entrypoint to start.sh
+ENTRYPOINT ["/app/start.sh"]
 
 #CMD php artisan serve --host=localhost --port=8000
 #EXPOSE 8000
