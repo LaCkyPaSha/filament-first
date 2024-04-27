@@ -12,5 +12,5 @@ php artisan route:cache
 echo "Running migrations..."
 php artisan migrate --force
 
-echo "Starting PHP built-in server..."
-php -S 0.0.0.0:8000 -t public
+#echo "Starting PHP built-in server..."
+#php -S 0.0.0.0:8000 -t public
