@@ -64,5 +64,5 @@ RUN chmod +x /app/start.sh
 ENTRYPOINT ["/app/start.sh"]
 
 # Expose port 8000
-EXPOSE 8000
+#EXPOSE 8000
 
