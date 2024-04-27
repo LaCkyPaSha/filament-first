@@ -191,16 +191,6 @@ RUN apt update && apt install -y \
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-RUN docker kill $(docker ps -q)
-RUN docker_clean_ps
-RUN docker rmi $(docker images -a -q)
-
-# Install Composer
-#COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Create a non-root user
-#RUN useradd -G www-data,root -u $uid -d /home/$user $user
-
 # Create Composer configuration directory and set permissions
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
@@ -209,7 +199,7 @@ RUN mkdir -p /home/$user/.composer && \
 WORKDIR /var/www
 
 # Clear Composer cache
-RUN php -d memory_limit=-1 composer clear-cache
+RUN #php -d memory_limit=-1 composer clear-cache
 
 # Switch to non-root user
 USER $user
