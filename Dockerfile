@@ -175,35 +175,75 @@
 #//////////////////////////////////////////
 
 # Use an official PHP image as base
+#FROM php:8.2-fpm
+#ARG user
+#ARG uid
+#
+## Install dependencies
+#RUN apt update && apt install -y \
+#    git \
+#    curl \
+#    libpng-dev \
+#    libonig-dev \
+#    libxml2-dev \
+#    && apt clean && rm -rf /var/lib/apt/lists/*
+#
+## Install PHP extensions
+#RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+#
+## Create Composer configuration directory and set permissions
+#RUN mkdir -p /home/$user/.composer && \
+#    chown -R $user:$user /home/$user
+#
+## Set working directory
+#WORKDIR /var/www
+#
+## Clear Composer cache
+#RUN #php -d memory_limit=-1 composer clear-cache
+#
+## Switch to non-root user
+#USER $user
+#
+#COPY start.sh /app/start.sh
+#RUN chmod +x /app/start.sh
+#ENTRYPOINT ["/app/start.sh"]
+#/////////////////////////////////////////
+
+#FROM alpine:latest
+## Install SQLite
+#RUN apk --no-cache add sqlite
+## Create a directory to store the database
+#WORKDIR /db
+## Copy your SQLite database file into the container
+#COPY initial-db.sqlite /db/
+## Expose the port if needed
+## EXPOSE 1433
+## Command to run when the container starts
+#CMD ["sqlite3", "/data/initial-db.sqlite"]
+
+#///////////////////////////////////////////////////
+
 FROM php:8.2-fpm
-ARG user
-ARG uid
 
-# Install dependencies
-RUN apt update && apt install -y \
-    git \
-    curl \
+WORKDIR /var/www/html
+
+RUN a2enmod rewrite
+
+RUN apt-get update -y && apt-get install -y \
+    libicu-dev \
+    unzip zip \
+    zlib1g-dev \
     libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    && apt clean && rm -rf /var/lib/apt/lists/*
+    libjpeg-dev \
+    libfreetype6-dev \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    sqlite3
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Create Composer configuration directory and set permissions
-RUN mkdir -p /home/$user/.composer && \
-    chown -R $user:$user /home/$user
+RUN docker-php-ext-install gettext intl sqlite3 pdo_sqlite gd
 
-# Set working directory
-WORKDIR /var/www
+RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
 
-# Clear Composer cache
-RUN #php -d memory_limit=-1 composer clear-cache
-
-# Switch to non-root user
-USER $user
-
-COPY start.sh /app/start.sh
-RUN chmod +x /app/start.sh
-ENTRYPOINT ["/app/start.sh"]

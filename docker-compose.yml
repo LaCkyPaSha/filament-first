@@ -27,22 +27,17 @@
 ##            - mailpit
 ##            - selenium
 services:
-    app:
-        build:
-            context: .
-            dockerfile: Dockerfile
+    filament-first:
+        container_name: filament-first
+        build: .
+        volumes:
+            - ./laravel-app:/var/www/html
         ports:
-            - 8000:80
-        depends_on:
-            - db
-    db:
-        image: sqlite:latest
+            - 9000:80
+    sqlite_db:
+        image: sqlite3:latest
         container_name: database
         restart: unless-stopped
-        volumes:
-            - ./database:/var/www/database
-        networks:
-            - my-network
 #    redis:
 #        image: 'redis:alpine'
 #        ports:
