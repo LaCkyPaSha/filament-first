@@ -241,7 +241,7 @@ RUN apt-get update -y && apt-get install -y \
     libjpeg62-turbo-dev \
     sqlite3 \
     libsqlite3-dev \
-    libzip
+    libzip-dev
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
