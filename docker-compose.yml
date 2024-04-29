@@ -31,7 +31,7 @@ services:
         container_name: filament-first
         build: .
         volumes:
-            - ./laravel-app:/var/www/html
+            - ./filament-first:/var/www/html
         ports:
             - 9000:80
     nginx:
