@@ -32,12 +32,15 @@ services:
         build: .
         volumes:
             - ./laravel-app:/var/www/html
-        ports:
-            - 9000:80
-    sqlite_db:
-        image: sqlite3:latest
-        container_name: database
-        restart: unless-stopped
+    nginx:
+            image: nginx:alpine
+            container_name: nginx-compose
+            restart: unless-stopped
+            ports:
+                - 8000:80
+            volumes:
+                - ./:/var/www/html
+                - ./docker-compose/nginx:/etc/nginx/conf.d/
 #    redis:
 #        image: 'redis:alpine'
 #        ports:
