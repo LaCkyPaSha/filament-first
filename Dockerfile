@@ -224,9 +224,6 @@
 #///////////////////////////////////////////////////
 
 FROM php:8.2-fpm
-WORKDIR /var/www
-
-COPY start.sh /app/start.sh
 
 WORKDIR /var/www/html
 
@@ -250,5 +247,5 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
 #COPY start.sh /app/start.sh
-RUN chmod +x /app/start.sh
-ENTRYPOINT ["/app/start.sh"]
+RUN #chmod +x /app/start.sh
+ENTRYPOINT ["/start.sh"]
