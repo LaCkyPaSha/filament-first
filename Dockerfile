@@ -250,7 +250,7 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN docker-php-ext-install pdo mbstring
+RUN docker-php-ext-install pdo mbstring oniguruma
 WORKDIR /app
 COPY . /app
 RUN composer install
