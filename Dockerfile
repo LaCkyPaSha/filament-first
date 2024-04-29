@@ -249,6 +249,12 @@ RUN docker-php-ext-install gettext intl pdo_sqlite gd
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN docker-php-ext-install pdo mbstring
+WORKDIR /app
+COPY . /app
+RUN composer install
+
 #COPY start.sh /app/start.sh
 #RUN chmod +x /start.sh
 #ENTRYPOINT ["/start.sh"]
