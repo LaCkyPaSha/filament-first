@@ -32,6 +32,8 @@ services:
         build: .
         volumes:
             - ./laravel-app:/var/www/html
+        ports:
+            - 9000:80
     nginx:
             image: nginx:alpine
             container_name: nginx-compose
@@ -39,7 +41,7 @@ services:
             ports:
                 - 8000:80
             volumes:
-                - ./:/var/www/html
+                - ./:/var/www
                 - ./docker-compose/nginx:/etc/nginx/conf.d/
 #    redis:
 #        image: 'redis:alpine'
