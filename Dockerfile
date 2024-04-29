@@ -255,6 +255,8 @@ WORKDIR /app
 COPY . /app
 RUN composer install
 
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
 #RUN sed -i 's/\r$//' /app/start.sh
