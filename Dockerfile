@@ -228,6 +228,8 @@ FROM php:8.2-fpm
 #
 #COPY start.sh /html/start.sh
 
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 WORKDIR /var/www/html
 
 RUN apt-get update -y && apt-get install -y \
@@ -251,11 +253,9 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-RUN composer install
-
 WORKDIR /app
 COPY . /app
+RUN composer install
 
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
