@@ -255,6 +255,8 @@ WORKDIR /app
 COPY . /app
 RUN composer install
 
+COPY composer.json /var/www/html/composer.json
+
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
 #RUN sed -i 's/\r$//' /app/start.sh
