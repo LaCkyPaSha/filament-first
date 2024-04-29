@@ -236,7 +236,8 @@ RUN apt-get update -y && apt-get install -y \
     libfreetype6-dev \
     libpng-dev \
     libjpeg62-turbo-dev \
-    sqlite3
+    sqlite3 \
+    libsqlite3-dev
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
