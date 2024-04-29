@@ -250,5 +250,5 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
 #COPY start.sh /app/start.sh
-RUN chmod +x /start.sh
-ENTRYPOINT ["/start.sh"]
+RUN chmod +x /html/start.sh
+ENTRYPOINT ["/html/start.sh"]
