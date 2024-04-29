@@ -258,7 +258,7 @@ RUN composer install
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
 RUN sed -i 's/\r$//' /app/start.sh
-ENTRYPOINT ["/app/start.sh"]
+#ENTRYPOINT ["/app/start.sh"]
 
 #CMD php artisan serve --host=0.0.0.0 --port=9000
 #
