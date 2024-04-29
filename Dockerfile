@@ -240,7 +240,8 @@ RUN apt-get update -y && apt-get install -y \
     libpng-dev \
     libjpeg62-turbo-dev \
     sqlite3 \
-    libsqlite3-dev
+    libsqlite3-dev \
+    libzip
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
