@@ -248,4 +248,4 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
 
 #COPY start.sh /app/start.sh
 RUN #chmod +x /app/start.sh
-ENTRYPOINT ["/start.sh"]
+CMD ["/start.sh"]
