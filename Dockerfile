@@ -250,12 +250,19 @@ RUN docker-php-ext-install gettext intl pdo_sqlite gd zip
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN #curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 WORKDIR /app
 COPY . /app
-RUN composer install
+RUN #composer install
+
+#///////////////////////////////////////////
+#> @php artisan package:discover --ansi
+#Could not open input file: artisan
+#Script @php artisan package:discover --ansi handling the post-autoload-dump event returned with error code 1
+#////////////////////////////////////////////
 
 COPY composer.json /var/www/html/composer.json
+COPY composer.lock /var/www/html/composer.lock
 
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
