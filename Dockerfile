@@ -250,6 +250,9 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
 #COPY start.sh /app/start.sh
-RUN chmod +x /start.sh
-ENTRYPOINT ["/start.sh"]
+#RUN chmod +x /start.sh
+#ENTRYPOINT ["/start.sh"]
+
+CMD php artisan serve --host=0.0.0.0 --port=9000
+
 EXPOSE 9000
