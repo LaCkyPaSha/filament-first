@@ -228,8 +228,6 @@ FROM php:8.2-fpm
 #
 #COPY start.sh /html/start.sh
 
-COPY /vendor/autoload.php /app/vendor/autoload.php
-
 WORKDIR /var/www/html
 
 RUN apt-get update -y && apt-get install -y \
@@ -261,7 +259,11 @@ RUN #composer install
 #> @php artisan package:discover --ansi
 #Could not open input file: artisan//////////////////////////////////////////////////////////////////////////////////////
 #Script @php artisan package:discover --ansi handling the post-autoload-dump event returned with error code 1
+
+#COPY /vendor/autoload.php /app/vendor/autoload.php
+
 #////////////////////////////////////////////
+RUN ls -la
 
 COPY composer.json /var/www/html/composer.json
 COPY composer.lock /var/www/html/composer.lock
