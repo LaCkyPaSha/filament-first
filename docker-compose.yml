@@ -31,7 +31,7 @@ services:
         container_name: filament-first
         build: .
         volumes:
-            - ./:/app
+            - ./filament-first:/app
         ports:
             - 9000:80
     nginx:
@@ -41,8 +41,7 @@ services:
             ports:
                 - 8000:80
             volumes:
-                - ./:/var/www/html
-                - ./:/app
+                - ./:/var/www
                 - ./docker-compose/nginx:/etc/nginx/conf.d/
 #    redis:
 #        image: 'redis:alpine'

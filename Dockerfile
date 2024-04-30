@@ -224,8 +224,10 @@
 #///////////////////////////////////////////////////
 
 FROM php:8.2-fpm
-#WORKDIR /var/www
-#
+WORKDIR ../
+
+RUN ls -la
+
 #COPY start.sh /html/start.sh
 
 WORKDIR /var/www/html
