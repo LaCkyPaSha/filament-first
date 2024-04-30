@@ -228,6 +228,8 @@ FROM php:8.2-fpm
 #
 #COPY start.sh /html/start.sh
 
+COPY /vendor/autoload.php /app/vendor/autoload.php
+
 WORKDIR /var/www/html
 
 RUN apt-get update -y && apt-get install -y \
@@ -263,7 +265,6 @@ RUN #composer install
 
 COPY composer.json /var/www/html/composer.json
 COPY composer.lock /var/www/html/composer.lock
-COPY vendor/autoload.php app/vendor/autoload.php
 
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
