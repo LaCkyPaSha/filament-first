@@ -224,9 +224,9 @@
 #///////////////////////////////////////////////////
 
 FROM php:8.2-fpm
-WORKDIR ../html
-
-RUN ls -la
+#WORKDIR ../html
+#
+#RUN ls -la
 
 #COPY start.sh /html/start.sh
 
@@ -265,7 +265,7 @@ RUN composer install
 #COPY /vendor/autoload.php /app/vendor/autoload.php
 
 #////////////////////////////////////////////
-RUN ls -la
+RUN #ls -la
 
 COPY composer.json /var/www/html/composer.json
 COPY composer.lock /var/www/html/composer.lock
