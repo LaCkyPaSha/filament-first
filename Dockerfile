@@ -229,7 +229,6 @@ FROM php:8.2-fpm
 #COPY start.sh /html/start.sh
 
 WORKDIR /var/www/html
-RUN ls
 RUN apt-get update -y && apt-get install -y \
     libicu-dev \
     unzip zip \
@@ -251,7 +250,7 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-WORKDIR /app
+WORKDIR /app/vendor
 COPY . /app
 RUN composer install
 
@@ -259,6 +258,7 @@ RUN composer install
 #> @php artisan package:discover --ansi
 #Could not open input file: artisan//////////////////////////////////////////////////////////////////////////////////////
 #Script @php artisan package:discover --ansi handling the post-autoload-dump event returned with error code 1
+
 #COPY /vendor/autoload.php /app/vendor/autoload.php
 
 #////////////////////////////////////////////
