@@ -6,7 +6,7 @@ use Symfony\Component\Console\Input\ArgvInput;
 define('LARAVEL_START', microtime(true));
 
     // Get the current directory
-    $currentDirectory = __DIR__."/app";
+    $currentDirectory = __DIR__;
 
     // Get the list of files and directories in the current directory
     $contents = scandir($currentDirectory);
