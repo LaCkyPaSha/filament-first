@@ -252,7 +252,7 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 WORKDIR /app/vendor
 COPY . /app
-RUN composer install
+RUN #composer install
 
 #///////////////////////////////////////////
 #> @php artisan package:discover --ansi
