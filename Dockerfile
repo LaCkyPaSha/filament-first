@@ -228,7 +228,11 @@ FROM php:8.2-fpm
 #
 #COPY start.sh /html/start.sh
 
+RUN ls -la
+
 WORKDIR /var/www/html
+
+RUN ls -la
 
 RUN apt-get update -y && apt-get install -y \
     libicu-dev \
