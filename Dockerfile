@@ -259,7 +259,8 @@ RUN composer install
 #> @php artisan package:discover --ansi
 #Could not open input file: artisan//////////////////////////////////////////////////////////////////////////////////////
 #Script @php artisan package:discover --ansi handling the post-autoload-dump event returned with error code 1
-
+WORKDIR /vendor
+RUN ls -la
 COPY /vendor/autoload.php /app/vendor/autoload.php
 
 #////////////////////////////////////////////
