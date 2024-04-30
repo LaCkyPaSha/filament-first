@@ -229,7 +229,7 @@ FROM php:8.2-fpm
 #COPY start.sh /html/start.sh
 
 WORKDIR /var/www/html
-
+RUN ls -la
 RUN apt-get update -y && apt-get install -y \
     libicu-dev \
     unzip zip \
@@ -259,8 +259,6 @@ RUN composer install
 #> @php artisan package:discover --ansi
 #Could not open input file: artisan//////////////////////////////////////////////////////////////////////////////////////
 #Script @php artisan package:discover --ansi handling the post-autoload-dump event returned with error code 1
-WORKDIR /vendor
-RUN ls -la
 #COPY /vendor/autoload.php /app/vendor/autoload.php
 
 #////////////////////////////////////////////
