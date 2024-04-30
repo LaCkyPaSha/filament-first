@@ -228,11 +228,7 @@ FROM php:8.2-fpm
 #
 #COPY start.sh /html/start.sh
 
-RUN ls -la
-
 WORKDIR /var/www/html
-
-RUN ls -la
 
 RUN apt-get update -y && apt-get install -y \
     libicu-dev \
@@ -254,10 +250,10 @@ RUN docker-php-ext-install gettext intl pdo_sqlite gd zip
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
-RUN #curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 WORKDIR /app
 COPY . /app
-RUN #composer install
+RUN composer install
 
 #///////////////////////////////////////////
 #> @php artisan package:discover --ansi
