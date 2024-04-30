@@ -245,7 +245,7 @@ RUN apt-get update -y && apt-get install -y \
     libsqlite3-dev \
     libzip-dev
 
-#COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN docker-php-ext-install gettext intl pdo_sqlite gd zip
 
