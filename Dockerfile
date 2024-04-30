@@ -263,7 +263,7 @@ RUN #composer install
 
 COPY composer.json /var/www/html/composer.json
 COPY composer.lock /var/www/html/composer.lock
-COPY /vendor/autoload.php /app/vendor/autoload.php
+COPY vendor/autoload.php app/vendor/autoload.php
 
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
