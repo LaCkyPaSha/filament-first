@@ -289,3 +289,8 @@ RUN chmod +x /app/start.sh
 #CMD php artisan serve --host=0.0.0.0 --port=9000
 #
 #EXPOSE 9000
+
+FROM nginx:1.13.8-alpine
+COPY ./filament-first.conf /etc/nginx/conf.d/default.conf
+
+
