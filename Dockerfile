@@ -296,23 +296,23 @@ RUN ls -la
 
 WORKDIR usr
 
-RUN ls -la
+RUN ls
 
 WORKDIR src
 
-RUN ls -la
+RUN ls
 
 WORKDIR bin
 
-RUN ls -la
+RUN ls
 
 WORKDIR local
 
-RUN ls -la
+RUN ls
 
 WORKDIR lib
 
-RUN ls -la
+RUN ls
 #WORDIR
 
 #COPY /app/docker-compose/nginx/filament-first.conf /etc/nginx/conf.d/default.conf
