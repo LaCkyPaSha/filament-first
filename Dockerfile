@@ -291,6 +291,6 @@ RUN chmod +x /app/start.sh
 #EXPOSE 9000
 
 FROM nginx:1.13.8-alpine
-COPY ./app/docker-compose/nginx/filament-first.conf /etc/nginx/conf.d/default.conf
+COPY /app/docker-compose/nginx/filament-first.conf /etc/nginx/conf.d/default.conf
 
 
