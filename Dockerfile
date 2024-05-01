@@ -296,6 +296,6 @@ RUN ls -la
 
 #WORDIR
 
-COPY /app/docker-compose/nginx/filament-first.conf /etc/nginx/conf.d/default.conf
+#COPY /app/docker-compose/nginx/filament-first.conf /etc/nginx/conf.d/default.conf
 
 
