@@ -298,31 +298,31 @@ WORKDIR usr
 
 RUN ls -la
 
-WORKDIR ./sys
+WORKDIR ../sys
 
 RUN ls -la
 
-WORKDIR ./root
+WORKDIR ../root
 
 RUN ls -la
 
-WORKDIR ./tmp
+WORKDIR ../tmp
 
 RUN ls -la
 
-WORKDIR ./dev
+WORKDIR ../dev
 
 RUN ls -la
 
-WORKDIR ./var
+WORKDIR ../var
 
 RUN ls -la
 
-WORKDIR ./media
+WORKDIR ../media
 
 RUN ls -la
 
-WORKDIR ./lib
+WORKDIR ../lib
 
 RUN ls -la
 #WORDIR
