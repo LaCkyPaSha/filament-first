@@ -16,7 +16,7 @@ define('LARAVEL_START', microtime(true));
 //        echo $item . PHP_EOL;
 //    }
 
-    echo(__DIR__);
+//    echo(__DIR__);
 
 //    dd('dd');
 
