@@ -16,7 +16,7 @@ define('LARAVEL_START', microtime(true));
         echo $item . PHP_EOL;
     }
 
-    dd('dd');
+//    dd('dd');
 
 // Register the Composer autoloader...
 require __DIR__.'/vendor/autoload.php';
