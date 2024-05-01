@@ -232,7 +232,7 @@ FROM php:8.2-fpm
 
 #WORKDIR /var/www/html
 
-WORKDIR .
+WORKDIR ..
 
 RUN apt-get update -y && apt-get install -y \
     libicu-dev \
