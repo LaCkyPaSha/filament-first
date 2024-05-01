@@ -27,22 +27,40 @@
 ##            - mailpit
 ##            - selenium
 services:
-    filament-first:
-        container_name: filament-first
-        build: .
+
+#    /////////////////////////////////////////////////////
+#    filament-first:
+#        container_name: filament-first
+#        build: .
+#        volumes:
+#            - ./app:/var/www/html
+#        ports:
+#            - 8000:80
+#    nginx:
+#        image: nginx:alpine
+#        container_name: nginx-compose
+#        restart: unless-stopped
+#        ports:
+#            - 9000:90
+#        volumes:
+#            - ./:/var/www
+#            - ./docker-compose/nginx:/etc/nginx/conf.d/
+
+#    /////////////////////////////////////////////////
+
+    php:
+        image: filament-first-php
         volumes:
-            - ./app:/var/www/html
-        ports:
-            - 80007:80
-    nginx:
-        image: nginx:alpine
-        container_name: nginx-compose
-        restart: unless-stopped
-        ports:
-            - 9000:90
+            - ./:/app
+        working_dir: /app
+    web:
+        image: filament-first-nginx
         volumes:
-            - ./:/var/www
-            - ./docker-compose/nginx:/etc/nginx/conf.d/
+            - ./:/app
+        depends_on:
+            - php
+        ports:
+            - 80:80
 #    redis:
 #        image: 'redis:alpine'
 #        ports:
