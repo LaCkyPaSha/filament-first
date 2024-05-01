@@ -33,7 +33,7 @@ services:
         volumes:
             - ./app:/var/www/html
         ports:
-            - 9191:9191
+            - 9001:9001
     nginx:
         image: nginx:alpine
         container_name: nginx-compose
