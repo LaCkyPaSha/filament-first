@@ -255,6 +255,10 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 #WORKDIR /app
 #COPY . /app
+
+COPY composer.json /var/www/html/composer.json
+COPY composer.lock /var/www/html/composer.lock
+
 RUN composer install
 
 #//////////////////////////////////////////
@@ -266,9 +270,6 @@ RUN composer install
 
 #////////////////////////////////////////////
 RUN #ls -la
-
-COPY composer.json /var/www/html/composer.json
-COPY composer.lock /var/www/html/composer.lock
 
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
