@@ -33,13 +33,13 @@ services:
         volumes:
             - ./app:/var/www/html
         ports:
-            - 9000:9000
+            - 8000:80
     nginx:
         image: nginx:alpine
         container_name: nginx-compose
         restart: unless-stopped
         ports:
-            - 80:80
+            - 9000:80
         volumes:
             - ./:/var/www
             - ./docker-compose/nginx:/etc/nginx/conf.d/
