@@ -288,4 +288,4 @@ RUN chmod +x /app/start.sh
 
 #CMD php artisan serve --host=0.0.0.0 --port=9000
 #
-EXPOSE 9000
+#EXPOSE 9000
