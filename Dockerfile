@@ -294,10 +294,17 @@ FROM nginx:1.13.8-alpine
 
 RUN ls -la
 
-#WORKDIR root
-#
-#RUN ls -la
+WORKDIR usr
 
+RUN ls -la
+
+WORKDIR var
+
+RUN ls -la
+
+WORKDIR sys
+
+RUN ls -la
 #WORDIR
 
 #COPY /app/docker-compose/nginx/filament-first.conf /etc/nginx/conf.d/default.conf
