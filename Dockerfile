@@ -294,35 +294,35 @@ FROM nginx:1.13.8-alpine
 
 RUN ls -la
 
-#WORKDIR usr
-#
-#RUN ls -la
-
-#WORKDIR sys
-#
-#RUN ls -la
-#
-#WORKDIR root
-#
-#RUN ls -la
-#
-#WORKDIR tmp
-#
-#RUN ls -la
-
-WORKDIR dev
+WORKDIR usr
 
 RUN ls -la
 
-WORKDIR var
+WORKDIR ./sys
 
 RUN ls -la
 
-WORKDIR media
+WORKDIR ./root
 
 RUN ls -la
 
-WORKDIR lib
+WORKDIR ./tmp
+
+RUN ls -la
+
+WORKDIR ./dev
+
+RUN ls -la
+
+WORKDIR ./var
+
+RUN ls -la
+
+WORKDIR ./media
+
+RUN ls -la
+
+WORKDIR ./lib
 
 RUN ls -la
 #WORDIR
