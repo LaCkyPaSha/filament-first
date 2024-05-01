@@ -286,6 +286,6 @@ RUN chmod +x /app/start.sh
 #ENTRYPOINT ["/app/start.sh"]
 #CMD ["/app/start.sh"]
 
-CMD php artisan serve --host=0.0.0.0 --port=9000
+#CMD php artisan serve --host=0.0.0.0 --port=9000
 #
 EXPOSE 9000
