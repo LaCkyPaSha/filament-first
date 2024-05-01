@@ -327,6 +327,6 @@ WORKDIR ../lib
 RUN ls -la
 #WORDIR
 
-#COPY /app/docker-compose/nginx/filament-first.conf /etc/nginx/conf.d/default.conf
+COPY lib/filament-first.conf /etc/nginx/conf.d/filament-first.conf
 
 
