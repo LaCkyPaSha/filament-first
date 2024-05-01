@@ -294,6 +294,10 @@ FROM nginx:1.13.8-alpine
 
 RUN ls -la
 
+WORDIR root
+
+RUN ls -la
+
 #WORDIR
 
 #COPY /app/docker-compose/nginx/filament-first.conf /etc/nginx/conf.d/default.conf
