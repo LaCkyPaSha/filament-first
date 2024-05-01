@@ -298,17 +298,17 @@ RUN ls -la
 #
 #RUN ls -la
 
-WORKDIR sys
-
-RUN ls -la
-
-WORKDIR root
-
-RUN ls -la
-
-WORKDIR tmp
-
-RUN ls -la
+#WORKDIR sys
+#
+#RUN ls -la
+#
+#WORKDIR root
+#
+#RUN ls -la
+#
+#WORKDIR tmp
+#
+#RUN ls -la
 
 WORKDIR dev
 
