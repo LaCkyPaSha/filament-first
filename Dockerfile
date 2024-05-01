@@ -294,9 +294,9 @@ FROM nginx:1.13.8-alpine
 
 RUN ls -la
 
-WORKDIR usr
-
-RUN ls -la
+#WORKDIR usr
+#
+#RUN ls -la
 
 WORKDIR sys
 
