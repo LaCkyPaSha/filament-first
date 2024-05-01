@@ -232,6 +232,8 @@ FROM php:8.2-fpm
 
 #WORKDIR /var/www/html
 
+WORKDIR /app
+
 RUN apt-get update -y && apt-get install -y \
     libicu-dev \
     unzip zip \
