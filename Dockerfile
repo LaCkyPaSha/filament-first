@@ -253,7 +253,7 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-#WORKDIR /app
+WORKDIR /app
 #COPY . /app
 RUN composer install
 
