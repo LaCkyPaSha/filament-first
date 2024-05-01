@@ -6,15 +6,17 @@ use Symfony\Component\Console\Input\ArgvInput;
 define('LARAVEL_START', microtime(true));
 
     // Get the current directory
-    $currentDirectory = __DIR__.'/vendor';
+//    $currentDirectory = __DIR__.'/vendor';
+//
+//    // Get the list of files and directories in the current directory
+//    $contents = scandir($currentDirectory);
+//
+//    // Print the contents
+//    foreach ($contents as $item) {
+//        echo $item . PHP_EOL;
+//    }
 
-    // Get the list of files and directories in the current directory
-    $contents = scandir($currentDirectory);
-
-    // Print the contents
-    foreach ($contents as $item) {
-        echo $item . PHP_EOL;
-    }
+    echo(__DIR__);
 
 //    dd('dd');
 
