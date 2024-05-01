@@ -298,19 +298,31 @@ WORKDIR usr
 
 RUN ls -la
 
-WORKDIR usr/src
+WORKDIR sys
 
 RUN ls -la
 
-WORKDIR usr/bin
+WORKDIR root
 
 RUN ls -la
 
-WORKDIR usr/local
+WORKDIR tmp
 
 RUN ls -la
 
-WORKDIR usr/lib
+WORKDIR dev
+
+RUN ls -la
+
+WORKDIR var
+
+RUN ls -la
+
+WORKDIR media
+
+RUN ls -la
+
+WORKDIR lib
 
 RUN ls -la
 #WORDIR
