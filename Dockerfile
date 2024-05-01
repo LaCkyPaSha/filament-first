@@ -230,7 +230,7 @@ FROM php:8.2-fpm
 
 #COPY start.sh /html/start.sh
 
-WORKDIR /var/www/html
+#WORKDIR /var/www/html
 
 RUN apt-get update -y && apt-get install -y \
     libicu-dev \
