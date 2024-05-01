@@ -267,9 +267,13 @@ RUN ls -la
 RUN #composer install
 
 #//////////////////////////////////////////
+
+#info
+#> Illuminate\Foundation\ComposerScripts::postAutoloadDump
 #> @php artisan package:discover --ansi
-#Could not open input file: artisan//////////////////////////////////////////////////////////////////////////////////////
+#Could not open input file: artisan
 #Script @php artisan package:discover --ansi handling the post-autoload-dump event returned with error code 1
+#Caching config...
 
 #COPY /vendor/autoload.php /app/vendor/autoload.php
 
