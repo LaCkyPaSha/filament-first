@@ -229,7 +229,7 @@ WORKDIR ../etc/nginx
 
 RUN ls -la
 
-#COPY lib/filament-first.conf /etc/nginx/conf.d/filament-first.conf
+#COPY lib/nginx.conf /etc/nginx/conf.d/nginx.conf
 
 FROM php:8.2-fpm
 #WORKDIR ../html
