@@ -297,7 +297,7 @@ RUN ls -la
 
 # Create nginx.conf file
 RUN echo 'upstream php {\
-              server php:9000;\
+              server localhost:9000;\
           } \
     server { \
         listen 80; \
