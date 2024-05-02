@@ -298,9 +298,9 @@ WORKDIR usr
 
 RUN ls -la
 
-WORKDIR ../usr/lib
-
-RUN ls -la
+#WORKDIR ../usr/lib
+#
+#RUN ls -la
 
 WORKDIR ../usr/src
 
