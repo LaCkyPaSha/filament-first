@@ -296,9 +296,9 @@ FROM nginx:1.24-alpine
 #
 RUN ls -la
 
-#WORKDIR usr
-#
-#RUN ls -la
+WORKDIR etc
+
+RUN ls -la
 
 #WORKDIR ../usr/lib
 #
@@ -331,7 +331,7 @@ RUN ls -la
 
 #WORKDIR
 
-RUN #find /etc/nginx -name "filament-first.conf"
+#RUN find /etc/nginx -name "filament-first.conf"
 
 #COPY lib/filament-first.conf /etc/nginx/conf.d/filament-first.conf
 
