@@ -49,19 +49,17 @@ services:
 #    /////////////////////////////////////////////////
 
     php:
-        build:
-            context: .
-            dockerfile: Dockerfile.php
+        build: .
         volumes:
-            - ./php:/var/www/html
+            - .:/var/www/html
         ports:
-            - "9000:9000"
+            - "9000"
 
     nginx:
         image: nginx:1.24-alpine
         volumes:
             - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-            - ./html:/var/www/html
+            - .:/var/www/html
         ports:
             - "80:80"
         depends_on:
