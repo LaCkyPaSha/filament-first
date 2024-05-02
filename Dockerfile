@@ -298,31 +298,27 @@ WORKDIR usr
 
 RUN ls -la
 
+WORKDIR ../usr/bin
+
+RUN ls -la
+
+WORKDIR ../usr/lib
+
+RUN ls -la
+
+WORKDIR ../usr/src
+
+RUN ls -la
+
+WORKDIR ../usr/local
+
+RUN ls -la
+
 WORKDIR ../dev
 
 RUN ls -la
 
 WORKDIR ../var
-
-RUN ls -la
-
-WORKDIR ../media
-
-RUN ls -la
-
-WORKDIR ../lib
-
-RUN ls -la
-
-WORKDIR ../lib/apk
-
-RUN ls -la
-
-WORKDIR ../lib/firmware
-
-RUN ls -la
-
-WORKDIR ../lib/mdev
 
 RUN ls -la
 
