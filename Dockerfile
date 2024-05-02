@@ -222,15 +222,6 @@
 #CMD ["sqlite3", "/data/initial-db.sqlite"]
 
 #///////////////////////////////////////////////////
-
-FROM nginx:1.24-alpine
-
-WORKDIR ../etc/nginx
-
-RUN ls -la
-
-#COPY lib/nginx.conf /etc/nginx/conf.d/nginx.conf
-
 FROM php:8.2-fpm
 #WORKDIR ../html
 #
@@ -297,3 +288,34 @@ RUN chmod +x /app/start.sh
 #CMD php artisan serve --host=0.0.0.0 --port=9000
 #
 #EXPOSE 9000
+
+FROM nginx:1.24-alpine
+
+WORKDIR ../etc/nginx
+
+RUN ls -la
+
+# Create nginx.conf file
+RUN echo 'server { \
+        listen 80; \
+        server_name localhost; \
+        \
+        root /var/www/html/public; \
+        \
+        index index.php index.html index.htm; \
+        \
+        location / { \
+            try_files $uri $uri/ /index.php?$query_string; \
+        } \
+        \
+        location ~ \.php$ { \
+            try_files $uri =404; \
+            fastcgi_pass php:9000; \
+            fastcgi_index index.php; \
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; \
+            include fastcgi_params; \
+        } \
+    }' > /etc/nginx/conf.d/nginx.conf
+
+
+#COPY lib/nginx.conf /etc/nginx/conf.d/nginx.conf
