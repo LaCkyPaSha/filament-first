@@ -292,8 +292,10 @@ RUN chmod +x /app/start.sh
 
 FROM nginx:1.13.8-alpine
 
-#RUN ls -la
-#
+WORKDIR ../
+
+RUN ls -la
+
 #WORKDIR usr
 #
 #RUN ls -la
@@ -322,9 +324,9 @@ FROM nginx:1.13.8-alpine
 #
 #RUN ls -la
 
-WORKDIR ../var/spool
-
-RUN ls -la
+#WORKDIR ../var/spool
+#
+#RUN ls -la
 
 
 #WORDIR
