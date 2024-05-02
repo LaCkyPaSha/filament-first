@@ -296,7 +296,10 @@ WORKDIR ../etc/nginx
 RUN ls -la
 
 # Create nginx.conf file
-RUN echo 'server { \
+RUN echo 'upstream php {\
+              server php:9000;\
+          } \
+    server { \
         listen 80; \
         server_name localhost; \
         \
