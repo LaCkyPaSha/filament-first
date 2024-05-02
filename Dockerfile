@@ -302,9 +302,9 @@ FROM nginx:1.13.8-alpine
 #
 #RUN ls -la
 
-WORKDIR ../usr/local/bin
-
-RUN ls -la
+#WORKDIR ../usr/local/bin
+#
+#RUN ls -la
 
 WORKDIR ../dev
 
