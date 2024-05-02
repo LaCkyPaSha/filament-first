@@ -295,6 +295,9 @@ FROM nginx:1.24-alpine
 #
 #RUN ls -la
 
+# Remove the old nginx.conf file if present
+RUN rm /etc/nginx/conf.d/default.conf
+
 # Create nginx.conf file
 RUN echo 'upstream php {\
               server php:9000;\

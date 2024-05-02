@@ -54,6 +54,7 @@ services:
             - .:/var/www/html
         ports:
             - "9000"
+        container_name: php
 
     nginx:
         image: nginx:1.24-alpine
