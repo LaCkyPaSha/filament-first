@@ -291,9 +291,9 @@ RUN chmod +x /app/start.sh
 
 FROM nginx:1.24-alpine
 
-WORKDIR ../etc/nginx
-
-RUN ls -la
+#WORKDIR ../etc/nginx
+#
+#RUN ls -la
 
 # Create nginx.conf file
 RUN echo 'upstream php {\
@@ -318,7 +318,7 @@ RUN echo 'upstream php {\
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; \
             include fastcgi_params; \
         } \
-    }' > /etc/nginx/conf.d/nginx.conf
+    }' > /etc/nginx/conf.d/default.conf
 
 
 #COPY lib/nginx.conf /etc/nginx/conf.d/nginx.conf
