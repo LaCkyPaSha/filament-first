@@ -55,7 +55,7 @@ services:
         volumes:
             - .:/var/www/html
         ports:
-            - "9000:9000"
+            - "9000"
     nginx:
         image: nginx:1.24-alpine
         volumes:
