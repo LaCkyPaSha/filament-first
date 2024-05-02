@@ -225,56 +225,9 @@
 
 FROM nginx:1.24-alpine
 
-#WORKDIR ../
-#
-RUN ls -la
-
-WORKDIR etc
-
-RUN ls -la
-
 WORKDIR ../etc/nginx
 
 RUN ls -la
-
-#WORKDIR ../etc/nginx/conf.d
-#
-#RUN ls -la
-#
-#RUN find . -name filament-first.conf
-
-#WORKDIR ../usr/lib
-#
-#RUN ls -la
-
-#WORKDIR ../usr/local/bin
-#
-#RUN ls -la
-
-#WORKDIR ../dev
-#
-#RUN ls -la
-#
-#WORKDIR ../home
-#
-#RUN ls -la
-
-#WORKDIR ../var
-#
-#RUN ls -la
-
-#WORKDIR ../var/run
-#
-#RUN ls -la
-
-#WORKDIR ../var/spool
-#
-#RUN ls -la
-
-
-#WORKDIR
-
-#RUN find /etc/nginx -name "filament-first.conf"
 
 #COPY lib/filament-first.conf /etc/nginx/conf.d/filament-first.conf
 
