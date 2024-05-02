@@ -292,9 +292,9 @@ RUN chmod +x /app/start.sh
 
 FROM nginx:1.13.8-alpine
 
-WORKDIR ../home
-
-RUN ls -la
+#WORKDIR ../
+#
+#RUN ls -la
 
 #WORKDIR usr
 #
@@ -329,7 +329,9 @@ RUN ls -la
 #RUN ls -la
 
 
-#WORDIR
+#WORKDIR
+
+RUN find / -name "filament-first.conf"
 
 #COPY lib/filament-first.conf /etc/nginx/conf.d/filament-first.conf
 
