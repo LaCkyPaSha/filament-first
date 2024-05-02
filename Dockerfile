@@ -314,9 +314,9 @@ FROM nginx:1.13.8-alpine
 #
 #RUN ls -la
 
-WORKDIR ../var
-
-RUN ls -la
+#WORKDIR ../var
+#
+#RUN ls -la
 
 WORKDIR ../var/local
 
