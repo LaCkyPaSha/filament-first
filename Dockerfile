@@ -306,15 +306,27 @@ FROM nginx:1.13.8-alpine
 #
 #RUN ls -la
 
-WORKDIR ../dev
-
-RUN ls -la
-
-WORKDIR ../home
-
-RUN ls -la
+#WORKDIR ../dev
+#
+#RUN ls -la
+#
+#WORKDIR ../home
+#
+#RUN ls -la
 
 WORKDIR ../var
+
+RUN ls -la
+
+WORKDIR ../var/local
+
+RUN ls -la
+
+WORKDIR ../var/run
+
+RUN ls -la
+
+WORKDIR ../var/spool
 
 RUN ls -la
 
