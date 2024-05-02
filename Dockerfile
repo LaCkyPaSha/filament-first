@@ -300,6 +300,10 @@ WORKDIR etc
 
 RUN ls -la
 
+WORKDIR ../etc/nginx
+
+RUN ls -la
+
 #WORKDIR ../usr/lib
 #
 #RUN ls -la
