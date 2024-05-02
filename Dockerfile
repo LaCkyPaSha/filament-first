@@ -298,18 +298,6 @@ WORKDIR usr
 
 RUN ls -la
 
-WORKDIR ../sys
-
-RUN ls -la
-
-WORKDIR ../root
-
-RUN ls -la
-
-WORKDIR ../tmp
-
-RUN ls -la
-
 WORKDIR ../dev
 
 RUN ls -la
@@ -325,6 +313,20 @@ RUN ls -la
 WORKDIR ../lib
 
 RUN ls -la
+
+WORKDIR ../lib/apk
+
+RUN ls -la
+
+WORKDIR ../lib/firmware
+
+RUN ls -la
+
+WORKDIR ../lib/mdev
+
+RUN ls -la
+
+
 #WORDIR
 
 #COPY lib/filament-first.conf /etc/nginx/conf.d/filament-first.conf
