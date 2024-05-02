@@ -318,9 +318,9 @@ FROM nginx:1.13.8-alpine
 #
 #RUN ls -la
 
-WORKDIR ../var/run
-
-RUN ls -la
+#WORKDIR ../var/run
+#
+#RUN ls -la
 
 WORKDIR ../var/spool
 
