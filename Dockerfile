@@ -290,7 +290,7 @@ RUN chmod +x /app/start.sh
 #
 #EXPOSE 9000
 
-FROM nginx:1.13.8-alpine
+FROM nginx:1.24-alpine
 
 #WORKDIR ../
 #
@@ -331,7 +331,7 @@ FROM nginx:1.13.8-alpine
 
 #WORKDIR
 
-RUN find / -name "filament-first.conf"
+RUN find /etc/nginx -name "filament-first.conf"
 
 #COPY lib/filament-first.conf /etc/nginx/conf.d/filament-first.conf
 
