@@ -302,10 +302,6 @@ FROM nginx:1.13.8-alpine
 #
 #RUN ls -la
 
-WORKDIR usr/src
-
-RUN ls -la
-
 WORKDIR ../usr/local
 
 RUN ls -la
