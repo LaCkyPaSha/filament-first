@@ -294,21 +294,21 @@ FROM nginx:1.24-alpine
 
 #WORKDIR ../
 #
-#RUN ls -la
-#
-#WORKDIR etc
-#
-#RUN ls -la
-#
-#WORKDIR ../etc/nginx
-#
-#RUN ls -la
+RUN ls -la
 
-WORKDIR ../etc/nginx/conf.d
+WORKDIR etc
 
 RUN ls -la
 
-RUN find . -name filament-first.conf
+WORKDIR ../etc/nginx
+
+RUN ls -la
+
+#WORKDIR ../etc/nginx/conf.d
+#
+#RUN ls -la
+#
+#RUN find . -name filament-first.conf
 
 #WORKDIR ../usr/lib
 #
