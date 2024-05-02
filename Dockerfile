@@ -298,10 +298,6 @@ WORKDIR usr
 
 RUN ls -la
 
-WORKDIR ../usr/bin
-
-RUN ls -la
-
 WORKDIR ../usr/lib
 
 RUN ls -la
@@ -315,6 +311,10 @@ WORKDIR ../usr/local
 RUN ls -la
 
 WORKDIR ../dev
+
+RUN ls -la
+
+WORKDIR ../home
 
 RUN ls -la
 
