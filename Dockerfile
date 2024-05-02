@@ -297,7 +297,7 @@ FROM nginx:1.24-alpine
 
 # Create nginx.conf file
 RUN echo 'upstream php {\
-              server localhost:9000;\
+              server php:9000;\
           } \
     server { \
         listen 80; \
