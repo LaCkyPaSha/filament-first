@@ -292,11 +292,11 @@ RUN chmod +x /app/start.sh
 
 FROM nginx:1.13.8-alpine
 
-RUN ls -la
-
-WORKDIR usr
-
-RUN ls -la
+#RUN ls -la
+#
+#WORKDIR usr
+#
+#RUN ls -la
 
 #WORKDIR ../usr/lib
 #
