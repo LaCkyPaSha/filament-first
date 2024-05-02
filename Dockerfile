@@ -308,6 +308,8 @@ WORKDIR ../etc/nginx/conf.d
 
 RUN ls -la
 
+RUN find . -name "filament-first.conf"
+
 #WORKDIR ../usr/lib
 #
 #RUN ls -la
