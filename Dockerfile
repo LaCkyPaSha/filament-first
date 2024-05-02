@@ -292,7 +292,7 @@ RUN chmod +x /app/start.sh
 
 FROM nginx:1.13.8-alpine
 
-WORKDIR ../
+WORKDIR ../home
 
 RUN ls -la
 
