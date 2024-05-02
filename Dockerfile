@@ -294,15 +294,15 @@ FROM nginx:1.24-alpine
 
 #WORKDIR ../
 #
-RUN ls -la
-
-WORKDIR etc
-
-RUN ls -la
-
-WORKDIR ../etc/nginx
-
-RUN ls -la
+#RUN ls -la
+#
+#WORKDIR etc
+#
+#RUN ls -la
+#
+#WORKDIR ../etc/nginx
+#
+#RUN ls -la
 
 WORKDIR ../etc/nginx/conf.d
 
