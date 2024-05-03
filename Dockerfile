@@ -254,19 +254,20 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+#
+#WORKDIR /app
+COPY . /var/www/html
 
-WORKDIR /app
-COPY . /app
-
-COPY composer.json /var/www/html/composer.json
-COPY composer.lock /var/www/html/composer.lock
+#COPY composer.json /var/www/html/composer.json
+#COPY composer.lock /var/www/html/composer.lock
 
 RUN ls -la
 
 RUN composer install
 
-COPY start.sh /app/start.sh
-RUN chmod +x /app/start.sh
+#COPY start.sh /app/start.sh
+#RUN chmod +x /app/start.sh
+
 #RUN sed -i 's/\r$//' /app/start.sh
 #ENTRYPOINT ["/app/start.sh"]
 #CMD ["/app/start.sh"]
@@ -275,39 +276,39 @@ RUN chmod +x /app/start.sh
 #
 #EXPOSE 9000
 
-FROM nginx:1.24-alpine
-
-#WORKDIR ../etc/nginx
+#FROM nginx:1.24-alpine
 #
-RUN ls -la
-
-# Remove the old nginx.conf file if present
-RUN rm /etc/nginx/conf.d/default.conf
-
-# Create nginx.conf file
-RUN echo 'upstream php {\
-              server php:9000;\
-          } \
-    server { \
-        listen 80; \
-        server_name localhost; \
-        \
-        root /var/www/html/public; \
-        \
-        index index.php index.html index.htm; \
-        \
-        location / { \
-            try_files $uri $uri/ /index.php?$query_string; \
-        } \
-        \
-        location ~ \.php$ { \
-            try_files $uri =404; \
-            fastcgi_pass php:9000; \
-            fastcgi_index index.php; \
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; \
-            include fastcgi_params; \
-        } \
-    }' > /etc/nginx/conf.d/default.conf
+##WORKDIR ../etc/nginx
+##
+#RUN ls -la
+#
+## Remove the old nginx.conf file if present
+#RUN rm /etc/nginx/conf.d/default.conf
+#
+## Create nginx.conf file
+#RUN echo 'upstream php {\
+#              server php:9000;\
+#          } \
+#    server { \
+#        listen 80; \
+#        server_name localhost; \
+#        \
+#        root /var/www/html/public; \
+#        \
+#        index index.php index.html index.htm; \
+#        \
+#        location / { \
+#            try_files $uri $uri/ /index.php?$query_string; \
+#        } \
+#        \
+#        location ~ \.php$ { \
+#            try_files $uri =404; \
+#            fastcgi_pass php:9000; \
+#            fastcgi_index index.php; \
+#            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; \
+#            include fastcgi_params; \
+#        } \
+#    }' > /etc/nginx/conf.d/default.conf
 
 
 #COPY lib/nginx.conf /etc/nginx/conf.d/nginx.conf

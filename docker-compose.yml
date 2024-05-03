@@ -49,12 +49,16 @@ services:
 #    /////////////////////////////////////////////////
 
     php:
-        build: .
+        build:
+            context: .
+            dockerfile: Dockerfile
         volumes:
             - .:/var/www/html
         ports:
             - "9000"
         container_name: php
+        extra_hosts:
+            - "172.17.0.1:host-gateway"
 
     nginx:
         image: nginx:1.24-alpine
@@ -65,6 +69,7 @@ services:
             - "80:80"
         depends_on:
             -   php
+
 #    php:
 #        build:
 #            context: .
