@@ -1,7 +1,7 @@
 ##    laravel.test:
 ##        build:
 ##            context: ./vendor/laravel/sail/runtimes/8.2
-##            dockerfile: Dockerfile
+##            dockerfile: 1Dockerfile
 ##            args:
 ##                WWWGROUP: '${WWWGROUP}'
 ##        image: sail-8.2/app
@@ -51,7 +51,7 @@ services:
     php:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: 1Dockerfile
         volumes:
             - .:/var/www/html
 #        ports:
@@ -73,7 +73,7 @@ services:
 #    php:
 #        build:
 #            context: .
-#            dockerfile: Dockerfile.php
+#            dockerfile: 1Dockerfile.php
 #        volumes:
 #            - ./app:/var/www/html
 #        ports:
@@ -82,7 +82,7 @@ services:
 #    nginx:
 #        build:
 #            context: .
-#            dockerfile: Dockerfile.nginx
+#            dockerfile: 1Dockerfile.nginx
 #        ports:
 #            - "80:80"
 #        depends_on:
@@ -154,7 +154,7 @@ services:
 #                user: user
 #                uid: 1000
 #            context: ./
-#            dockerfile: Dockerfile
+#            dockerfile: 1Dockerfile
 #        image: my-first-image
 #        container_name: app
 #        restart: unless-stopped
