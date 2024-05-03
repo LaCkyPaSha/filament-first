@@ -254,16 +254,26 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-#
-#WORKDIR /app
+
 COPY . /var/www/html
 
-#COPY composer.json /var/www/html/composer.json
-#COPY composer.lock /var/www/html/composer.lock
+RUN cp .env.example .env \
+&& sed -i 's/DB_CONNECTION=mysql/DB_CONNECTION=sqlite/g' .env \
+&& sed -i 's/DB_HOST=127.0.0.1/ /g' .env \
+&& sed -i 's/DB_PORT=3306/ /g' .env \
+&& sed -i 's/DB_DATABASE=/ /g' .env \
+&& sed -i 's/DB_USERNAME=/ /g' .env \
+&& sed -i 's/DB_PASSWORD=/ /g' .env
 
-RUN ls -la
+RUN chmod -R 777 /storage /bootstrap/cache
 
-RUN composer install
+RUN chmod +x /var/www/html/start.sh
+
+#RUN ls -la
+
+RUN composer install --no-interaction
+
+CMD ["sh","/var/www/html/start.sh"]
 
 #COPY start.sh /app/start.sh
 #RUN chmod +x /app/start.sh

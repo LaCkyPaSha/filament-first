@@ -23,13 +23,16 @@
 #echo "Running composer"
 #composer install --no-dev --working-dir=/var/www/html
 
-echo "Caching config..."
-php artisan config:cache
+echo "Running migrations..."
+php artisan key:generate --show
 
-echo "Caching routes..."
-php artisan route:cache
+#echo "Caching config..."
+#php artisan config:cache
+#
+#echo "Caching routes..."
+#php artisan route:cache
 
 echo "Running migrations..."
-php artisan migrate --force
+php artisan migrate --seed
 
 php artisan serve --host=0.0.0.0 --port=9000
