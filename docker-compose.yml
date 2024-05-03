@@ -54,8 +54,8 @@ services:
             dockerfile: Dockerfile
         volumes:
             - .:/var/www/html
-        ports:
-            - "9000"
+#        ports:
+#            - "9000"
         container_name: php
         extra_hosts:
             - "172.17.0.1:host-gateway"
