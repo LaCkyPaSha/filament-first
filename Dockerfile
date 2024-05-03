@@ -265,7 +265,7 @@ RUN cp .env.example .env \
 && sed -i 's/DB_USERNAME=/ /g' .env \
 && sed -i 's/DB_PASSWORD=/ /g' .env
 
-RUN chmod -R 777 /storage /bootstrap/cache
+RUN chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache
 
 RUN chmod +x /var/www/html/start.sh
 
